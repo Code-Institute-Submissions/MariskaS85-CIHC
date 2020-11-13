@@ -1,19 +1,30 @@
 import os
-from flask import Flask 
+from flask import (
+    Flask, flash, render_template, 
+    redirect, request, session, url_for
+    )
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
 if os.path.exists("env.py"):
     import env 
 
 
 app = Flask(__name__)
 
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.secret_key = os.environ.get("SECRET_KEY")
 
-@app.route("/")
-def hello():
-    return "Welcome to the dictionairy of the Chinese Indonesian Heritage Center"
+mongo = PyMongo(app)
+
+
+@app.route('/')
+@app.route('/get_word')
+def get_word():
+        return render_template("home.html", words=mongo.db.words.find())
 
 
 if __name__=="__main__":
-    app.run(host=os.environ.get("IP"),
-        port=int(os.environ.get("PORT")),
+    app.run(host=os.environ.get('IP'),
+        port=int(os.environ.get('PORT')),
         debug=True)
-
