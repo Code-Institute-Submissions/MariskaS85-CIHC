@@ -18,13 +18,14 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-@app.route('/')
-@app.route('/get_word')
-def get_word():
-        return render_template("home.html", words=mongo.db.words.find())
+@app.route("/")
+@app.route("/get_words")
+def get_words():
+    words = mongo.db.words.find()
+    return render_template("home.html", words=words)
 
 
 if __name__=="__main__":
-    app.run(host=os.environ.get('IP'),
-        port=int(os.environ.get('PORT')),
+    app.run(host=os.environ.get("IP"),
+        port=int(os.environ.get("PORT")),
         debug=True)

@@ -1,20 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CIHC dictionary</title>
-</head>
-<body>
-    {% for words in words %}
-        {{  words.word }}
-        {{  words.category_name }}
-        {{  words.slc }}
-        {{  words.tlc }}
-        {{  words.meaning }}
-        {{  words.usage }}
-        {{  words.created_at }}
-        {{  words.updated }}
-    {% endblock %}
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+Welcome at the online dictionairy of the Chinese Indonesian Hertitage Center 
+   
+        <br>
+      
+You can use the magnifying glass in the right corner if you are looking for any word in particular. Or you can browse the dictionary below
+
+  <ul class="collapsible">
+    {% for word in words %}
+    
+    <li>
+        <div class="collapsible-header green white-text"><i                             class="material-icons">library_books</i><b><h3>{{  word.word }}</h3></b>
+        </div>
+        <div class="collapsible-body grey white-text">
+            <span>
+                <table>
+                    <tbody>    
+                        <tr>
+                            <td><b>Language</b></td>
+                            <td> {{  word.slc }}</td>
+                        </tr> 
+                        <tr>
+                            <td><b>Translation</b></td>
+                            <td>{{  word.translation }}</td>
+                            <td></td>
+                            <td> {{  word.tlc }}</td>
+                        </tr>  
+                        <tr>
+                            <td><b>Category</b></td>
+                            <td>{{  word.category_name }}</td>
+                        </tr>
+
+                
+                       
+
+                        <tr>
+                            <td><b>Meaning</b></td>
+                            <td>{{ word.meaning }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>First added</b></td>
+                            <td>{{  word.created_at }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Updated</b></td>
+                            <td> {{  word.updated_at }}</td>
+                        </tr>
+                    </tbody>
+                                       
+                </table>
+                <table>
+                 <tbody>
+                        <tr>
+                            <td>Click <a href="{{  word.usage }}" class="btn tooltipped white-text grey" data-position="bottom" data-tooltip="{{  word.usage }}">here</a>for the full article </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </span>
+        </div>
+    {% endfor %}
+    </li>
+    <li>
+      <div class="collapsible-header green white-text"><i class="material-icons">library_books</i>Second</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header green white-text"><i class="material-icons">library_books</i>Third</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+  </ul>
+
+{% endblock %}
