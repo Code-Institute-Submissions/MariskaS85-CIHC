@@ -14,8 +14,8 @@
 <nav>
     <div class="nav-wrapper green">
     
-        <a href="#!" class="brand-logo">CIHC</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <a href="{{ url_for('get_words') }}" class="brand-logo">CIHC</a>
+        <a href="{{ url_for('get_words') }}" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
         <form>
             <div class="input-field right">
@@ -26,20 +26,20 @@
         </form>
 
         <ul class="right hide-on-med-and-down">
-            <li><a href="add.html">Add word</a></li>
-            <li><a href="edit.html">Edit word</a></li>
-            <li><a href="delete.html">Delete word</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="{{ url_for('add_words') }}">Add word</a></li>
+            <li><a href="{{ url_for('edit_words') }}">Edit word</a></li>
+            <li><a href="{{ url_for('delete_words') }}">Delete word</a></li>
+            <li><a href="{{ url_for('about_page') }}">About</a></li>
         </ul> 
 
     </div>
 </nav>
 
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="add.html">Add word</a></li>
-        <li><a href="edit.html">Edit word</a></li>
-        <li><a href="delete.html">Delete word</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="{{ url_for('add_words') }}">Add word</a></li>
+            <li><a href="{{ url_for('edit_words') }}">Edit word</a></li>
+            <li><a href="{{ url_for('delete_words') }}">Delete word</a></li>
+            <li><a href="{{ url_for('about_page') }}">About</a></li>
     </ul>
 <body>
 

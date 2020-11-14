@@ -24,6 +24,25 @@ def get_words():
     words = mongo.db.words.find()
     return render_template("home.html", words=words)
 
+@app.route("/add_words")
+def add_words():
+    words = mongo.db.words.find()
+    return render_template("add.html", words=words)
+
+@app.route("/edit_words")
+def edit_words():
+    words = mongo.db.words.find()
+    return render_template("edit.html", words=words)
+
+@app.route("/delete_words")
+def delete_words():
+    words = mongo.db.words.find()
+    return render_template("delete.html", words=words)
+
+@app.route("/about_page")
+def about_page():
+    words = mongo.db.words.find()
+    return render_template("about.html", words=words)
 
 if __name__=="__main__":
     app.run(host=os.environ.get("IP"),
