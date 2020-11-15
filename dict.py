@@ -24,10 +24,27 @@ def get_words():
     words = mongo.db.words.find()
     return render_template("home.html", words=words)
 
-@app.route("/add_words")
+@app.route("/add_words", methods=["GET", "POST"])
 def add_words():
-    words = mongo.db.words.find()
-    return render_template("add.html", words=words)
+    if request.method == "POST":
+        words = {
+            "word": request.form.get("word"),
+            "translation": request.form.get("translation"),
+            "category_name": request.form.get("category_name"),
+            "slc": request.form.get("slc"),
+            "tlc": request.form.get("tlc"),
+            "meaning": request.form.get("meaning"),
+            "usage": request.form.get("usage"),
+        }
+        mongo.db.words.insert_one(words)
+        flash("thanks for your contribution to the CIHC dictionairy")
+        return redirect(url_for("get_words"))
+
+    category = mongo.db.category.find().sort("category_name", 1)
+    return render_template("add.html", category=category)
+
+
+
 
 @app.route("/edit_words")
 def edit_words():

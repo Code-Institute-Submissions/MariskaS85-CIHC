@@ -1,9 +1,73 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3>HIER KAN JE EEN NIEUW WOORD GAAN TOEGOEGEN</h3>
+
+<h3 class="page_header">Add word to dictionairy</h3>
 
 
 
+<div class="green white-text">
+    <div class="row">
+        <form class="col s12" method="POST" action="{{ url_for('add_words') }}">
+            <div class="row">
+                <div class="input-field col s8">
+                    <input placeholder="Please fill in the word" id="word" name="word" 
+                    minlength="3" maxlength="50" type="text" class="validate" required>
+                    <label for="word">Word in Chinese or Bahasa Indonesia</label>
+                </div>
 
+                 <div class="input-field col s4">
+                    <select class="icons" placeholder="What language is it?" id="slc" name="slc"  required>
+                    <option value="" disabled selected>Select language</option>
+                    <option value="" data-icon="images/sample-1.jpg" class="left">Chinese</option>
+                    <option value="" data-icon="images/office.jpg" class="left">Bahasa Indonesia</option>
+                    </select>
+                    <label for="slc">Select language</label>
+                </div>
+                <div class="input-field col s8">
+                    <input placeholder="Please fill in the translation" id="translation" name="translation" 
+                    minlength="3" maxlength="50" type="text" class="validate" required>
+                    <label for="translation">Word in English or Dutch</label>
+                </div>
+
+                 <div class="input-field col s4">
+                    <select class="icons" placeholder="What language is it?" id="tlc" name="tlc"  required>
+                    <option value="" disabled selected>Select language</option>
+                    <option value="" data-icon="images/sample-1.jpg" class="left">English</option>
+                    <option value="" data-icon="images/office.jpg" class="left">Dutch</option>
+                    </select>
+                    <label>Select language</label>
+                </div>
+                <div class="input-field col s12">
+                    <textarea placeholder="What is the meaning of the word" id="meaning" name="meaning"  
+                    minlength="3" maxlength="300" type="text" required class="materialize-textarea"></textarea>
+                    <label for="meaning">Meaning of the word</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <select placeholder="Select Category" id="category_name"   name="category_name" class="validate" class="materialize-textarea" required >
+                        <option value="" disabled selected>Select category</option>
+                        {% for category in category %}
+                        <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Select Category</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <textarea placeholder="Please paste the website link" id="usage" name="usage" required class="materialize-textarea"></textarea>
+                    <label for="usage">Meaning of the word</label>
+                </div>
+                <div class="col s12">
+                    <button class="btn waves-effect green waves-grey" type="submit" name="" id="message" onclick="innerHTML()">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+      </div>
+    </form>
+        </div>
+        </div>
+        </form>
+    </div>
+  </div>
 {% endblock %}

@@ -2,8 +2,15 @@ body {
     background-color: grey;
 }
 
-
+h3 {
+    align-content: center;
+    text-align: center;
+}
 
 .search {
     align-items: right;
+}
+
+.container {
+    margin: 20px;
 }

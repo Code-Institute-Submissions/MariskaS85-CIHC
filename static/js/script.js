@@ -1,5 +1,8 @@
   $(document).ready(function(){
     $('.sidenav').sidenav();
     $('.collapsible').collapsible();
-     $('.tooltipped').tooltip();
+    $('.tooltipped').tooltip();
+    $('select').formSelect();
+    $('input#input_text, textarea#textarea2').characterCounter();
+    $('.message').innerHTML("Thank you for your condribution!");
   });
