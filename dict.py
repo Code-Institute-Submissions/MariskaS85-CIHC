@@ -30,8 +30,6 @@ def search():
     words = list(mongo.db.words.find({"$text": {"$search": query}}))
     return render_template("home.html", words=words)
 
-
-
 @app.route("/add_words", methods=["GET", "POST"])
 def add_words():
     if request.method == "POST":
@@ -72,7 +70,7 @@ def edit_words(words_id):
 
     mongo.db.words.update({"_id": ObjectId(words_id)}, submit)
 
-    task = mongo.db.tasks.find_one({"_id": ObjectId(words_id)})
+    word = mongo.db.words.find_one({"_id": ObjectId(words_id)})
     words = mongo.db.words.find().sort("word", 1)
     return render_template("edit.html", words=words)
 
@@ -85,8 +83,7 @@ def delete_word(words_id):
 
 @app.route("/about_page")
 def about_page():
-    words = mongo.db.words.find()
-    return render_template("about.html", words=words)
+    return render_template("about.html")
 
 if __name__=="__main__":
     app.run(host=os.environ.get("IP"),
