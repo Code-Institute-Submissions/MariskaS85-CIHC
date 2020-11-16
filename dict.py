@@ -24,6 +24,14 @@ def get_words():
     words = mongo.db.words.find()
     return render_template("home.html", words=words)
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    words = list(mongo.db.words.find({"$text": {"$search": query}}))
+    return render_template("home.html", words=words)
+
+
+
 @app.route("/add_words", methods=["GET", "POST"])
 def add_words():
     if request.method == "POST":
@@ -35,7 +43,9 @@ def add_words():
             "tlc": request.form.get("tlc"),
             "meaning": request.form.get("meaning"),
             "usage": request.form.get("usage"),
+            "created_on": request.form.getTimestamp("created_at"),
         }
+
         mongo.db.words.insert_one(words)
         flash("thanks for your contribution to the CIHC dictionairy")
         return redirect(url_for("get_words"))
@@ -46,15 +56,32 @@ def add_words():
 
 
 
-@app.route("/edit_words")
-def edit_words():
-    words = mongo.db.words.find()
+@app.route("/edit_words/", methods=["GET","POST"])
+def edit_words(words_id):
+    if request.method == "POST":
+        words_id = {
+            "word": request.form.get("word"),
+            "translation": request.form.get("translation"),
+            "category_name": request.form.get("category_name"),
+            "slc": request.form.get("slc"),
+            "tlc": request.form.get("tlc"),
+            "meaning": request.form.get("meaning"),
+            "usage": request.form.get("usage"),
+            "created_on": request.form.getTimestamp("created_at"),
+        }
+
+    mongo.db.words.update({"_id": ObjectId(words_id)}, submit)
+
+    task = mongo.db.tasks.find_one({"_id": ObjectId(words_id)})
+    words = mongo.db.words.find().sort("word", 1)
     return render_template("edit.html", words=words)
 
-@app.route("/delete_words")
-def delete_words():
-    words = mongo.db.words.find()
-    return render_template("delete.html", words=words)
+@app.route("/delete_word")
+def delete_word(words_id):
+    mongo.db.words.remove({ "_id": ObjectId(words_id)})
+    return redirect(url_for("edit_words"))
+
+
 
 @app.route("/about_page")
 def about_page():
