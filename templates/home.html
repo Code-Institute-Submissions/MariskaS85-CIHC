@@ -1,15 +1,12 @@
 {% extends "base.html" %}
 {% block nav %}
 <div class="container">
-   <h2 class="center-align"> Welcome to the online dictionary <br> of <br> the Chinese Indonesian Heritage Center</h2>
+   <h4 class="center-align"> Welcome to the online dictionary <br> of <br> the Chinese Indonesian Heritage Center</h4>
 </div>
-   
-{% endblock %}
-
-  
+{% endblock %} 
 {% block content %}
     <div class="row card-panel green">
-        <form action="{{url_for('search') }}" method="POST" class="col s12">
+        <form action="{{ url_for('search') }}" method="POST" class="col s12">
             <div class="row valign-wrapper center-align">
                 <div class="input-field col s12 m8"> 
                         <input type="text" name="query" id="query" minlength="3" maxlength="50" class="validate" required> 
@@ -26,9 +23,9 @@
     <ul class="collapsible">
         {% for word in words %}  
         <li>
-            <div class="collapsible-header green white-text"><i         class="material-icons">library_books</i><b><h3>{{  word.word }}</h3></b>
+            <div class="collapsible-header green grey-text"><i class="material-icons">library_books</i><b><h3>{{  word.word }}</h3></b>
             </div>
-            <div class="collapsible-body grey white-text">
+            <div class="collapsible-body grey lighten-3 grey-text">
                 <span>
                     <table>
                         <tbody>    

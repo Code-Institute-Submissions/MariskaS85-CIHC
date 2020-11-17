@@ -1,5 +1,11 @@
+html, body {
+  height: 100%;
+}
+
 body {
-    background-color: white;
+    background-image: url("https://github.com/MariskaS85/CIHC/blob/main/templates/images/batik-symbool-van-de-indonesische-identiteit-933.jpg?raw=true");
+    height: 100%;
+    margin: 0;
 }
 
 h3 {
@@ -33,4 +39,21 @@ h6 {
 
 h5 {
     font-weight: bold;
+}
+
+.container {
+    flex: 1 0 auto;
+}
+
+.page-footer {
+    background-color: black;
+    flex-shrink: 0;
+}
+
+.card-panel {
+    background-color: lightgrey;
+    padding: 5px;
+}
+.brand-logo {
+    margin: 10px;
 }
