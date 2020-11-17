@@ -11,20 +11,32 @@
     {% endblock %}
     <title>The Chinese Indonesian Dictionary </title>
 </head>
-<nav>
-    <div class="nav-wrapper green">
-    
-        <a href="{{ url_for('get_words') }}" class="brand-logo">CIHC</a>
-        <a href="{{ url_for('get_words') }}" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
-            <li><a href="{{ url_for('get_words') }}">Home</a></li>
-            <li><a href="{{ url_for('add_words') }}">Add word</a></li>
-            <li><a href="{{ url_for('about_page') }}">About</a></li>
-        </ul> 
-
-    </div>
-</nav>
-
+<header>
+    <nav>
+        <div class="nav-wrapper green">
+        
+            <a href="{{ url_for('get_words') }}" class="brand-logo">CIHC</a>
+            <a href="{{ url_for('get_words') }}" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="{{ url_for('get_words') }}">Home</a></li>
+                <li><a href="{{ url_for('add_words') }}">Add word</a></li>
+                <li><a href="{{ url_for('about_page') }}">About</a></li>
+            </ul> 
+        </div>
+    </nav>
+</header>
+<section>
+    {% with messages = get_flashed_messages() %}
+        
+        {% if messages %}
+            {% for message in messages %}
+                <div class="row flashes">
+                    <h5 id="flash" class="green text-white center-align">{{ message }}</h5>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</section>
     <ul class="sidenav" id="mobile-demo">
         <li><a href="{{ url_for('get_words') }}">Home</a></li>
         <li><a href="{{ url_for('add_words') }}">Add word</a></li>

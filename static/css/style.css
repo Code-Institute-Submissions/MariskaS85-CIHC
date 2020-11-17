@@ -1,5 +1,5 @@
 body {
-    background-color: grey;
+    background-color: white;
 }
 
 h3 {
@@ -18,4 +18,19 @@ h1 {
 
 h6 {
     margin: 10px;
+}
+
+.collapsible-header {
+    display: flex;
+    align-items: center;
+}
+
+.flashes h5 {
+    margin: 5px;
+    padding: 10px;
+    background-color: greenyellow;
+}
+
+h5 {
+    font-weight: bold;
 }

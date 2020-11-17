@@ -18,9 +18,10 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+def validate_form(form):
+    return True
 
 @app.route("/")
-@app.route("/get_words")
 def get_words():
     words = list(mongo.db.words.find())
     return render_template("home.html", words=words)
@@ -28,7 +29,12 @@ def get_words():
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
-    words = list(mongo.db.words.find({"$text": {"$search": query}}))
+    words = []
+    if query.length == 0:
+        flash("No words to search")
+    else :
+        words = list(mongo.db.words.find({"$text": {"$search": query}}))
+
     return render_template("home.html", words=words)
 
 @app.route("/add_words", methods=["GET", "POST"])
@@ -45,7 +51,7 @@ def add_words():
         }
 
         mongo.db.words.insert_one(words)
-        flash("thanks for your contribution to the CIHC dictionairy")
+        flash("Thank for your contribution to the CIHC dictionary")
         return redirect(url_for("get_words"))
 
     category = mongo.db.category.find().sort("category_name", 1)
@@ -55,8 +61,26 @@ def add_words():
 @app.route("/edit_word/<word_id>", methods=["GET","POST"])
 def edit_word(word_id):
     word = mongo.db.words.find_one({"_id": ObjectId(word_id)})
+    if request.method == "POST":
+        is_valid = validate_form(request.form) 
+        if is_valid:
+            words_dict = {
+                "word": request.form.get("word"),
+                "translation": request.form.get("translation"),
+                "category_name": request.form.get("category_name"),
+                "slc": request.form.get("slc"),
+                "tlc": request.form.get("tlc"),
+                "meaning": request.form.get("meaning"),
+                "usage": request.form.get("usage"),
+            }
+            mongo.db.words.update({"_id": ObjectId(word_id)}, words_dict)    
+            flash("You edited the dictionary succesfully")
+
+        else: 
+            flash("Please try again")
+            
     category = mongo.db.category.find().sort("category_name", 1)
-    return render_template("home.html", word=word, category=category)   
+    return render_template("edit_word.html", words=words, category=category)
 
 @app.route("/about_page")
 def about_page():
@@ -65,6 +89,7 @@ def about_page():
 @app.route("/delete_word/<word_id>")
 def delete_word(word_id):
     mongo.db.words.remove({ "_id": ObjectId(word_id)})
+    flash("Deletion succesfull")
     return redirect(url_for("get_words"))
 
 if __name__=="__main__":
