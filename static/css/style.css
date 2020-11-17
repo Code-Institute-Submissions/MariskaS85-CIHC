@@ -11,6 +11,11 @@ h3 {
     align-items: right;
 }
 
-.container {
-    margin: 20px;
+
+h1 {
+    margin: 10px;
+}
+
+h6 {
+    margin: 10px;
 }

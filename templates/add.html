@@ -2,7 +2,7 @@
 {% block content %}
 
 
-<h3 class="page_header">Add word to dictionary</h3>
+<h3 class="page_header">Add word to dictionairy</h3>
 
 
 
@@ -18,9 +18,9 @@
 
                  <div class="input-field col s4">
                     <select class="icons" placeholder="What language is it?" id="slc" name="slc"  required>
-                    <option value="" disabled selected>Select language</option>
-                    <option value="" data-icon="images/sample-1.jpg" class="left">Chinese</option>
-                    <option value="" data-icon="images/office.jpg" class="left">Bahasa Indonesia</option>
+                        <option value="" disabled selected>Select language</option>
+                        <option value="CHI" data-icon="CHI.png" class="left">CHI</option>
+                        <option value="IND" data-icon="/IND.jpg" class="left">IND</option>
                     </select>
                     <label for="slc">Select language</label>
                 </div>
@@ -32,9 +32,9 @@
 
                  <div class="input-field col s4">
                     <select class="icons" placeholder="What language is it?" id="tlc" name="tlc"  required>
-                    <option value="" disabled selected>Select language</option>
-                    <option value="" data-icon="images/sample-1.jpg" class="left">English</option>
-                    <option value="" data-icon="images/office.jpg" class="left">Dutch</option>
+                        <option value="" disabled selected>Select language</option>
+                        <option value="EN" data-icon="../images/EN.png" class="left">EN</option>
+                        <option value="NL" data-icon="/images/NL.png" class="left">NL</option>
                     </select>
                     <label>Select language</label>
                 </div>
@@ -54,12 +54,14 @@
                     <label>Select Category</label>
                 </div>
 
-                <div class="input-field col s12" type="url" pattern="https://.*"    size="30">
+                <div class="input-field col s12">
                     <textarea placeholder="Please paste the website link" id="usage" name="usage" required class="materialize-textarea"></textarea>
-                    <label for="usage">Meaning of the word</label>
+                    <label for="usage">Article in which the word was used (only one link possible)</label>
                 </div>
-
-
+                <div class="col s12">
+                    <button class="btn waves-effect green waves-grey" type="submit" name="" id="message" onclick="innerHTML()">Submit<i class="material-icons right">send</i>
+                    </button>
+                </div>
       </div>
     </form>
         </div>
