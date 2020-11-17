@@ -37,7 +37,7 @@ def search():
 
     return render_template("home.html", words=words)
 
-@app.route("/add_words", methods=["GET", "POST"])
+@app.route("/add", methods=["GET", "POST"])
 def add_words():
     if request.method == "POST":
         words = {
@@ -60,6 +60,8 @@ def add_words():
 
 @app.route("/edit_word/<word_id>", methods=["GET","POST"])
 def edit_word(word_id):
+    print ("Does this work?")
+    print (word_id)
     word = mongo.db.words.find_one({"_id": ObjectId(word_id)})
     if request.method == "POST":
         is_valid = validate_form(request.form) 
@@ -75,12 +77,13 @@ def edit_word(word_id):
             }
             mongo.db.words.update({"_id": ObjectId(word_id)}, words_dict)    
             flash("You edited the dictionary succesfully")
+            return redirect(url_for("get_words"))
 
         else: 
             flash("Please try again")
             
     category = mongo.db.category.find().sort("category_name", 1)
-    return render_template("edit_word.html", words=words, category=category)
+    return render_template("edit_word.html", word=word, category=category)
 
 @app.route("/about_page")
 def about_page():

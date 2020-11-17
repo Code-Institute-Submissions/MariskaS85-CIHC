@@ -1,1 +1,1 @@
-web: python dict.py
+web: python app.py

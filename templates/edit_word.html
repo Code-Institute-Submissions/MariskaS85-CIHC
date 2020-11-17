@@ -16,47 +16,47 @@
                     <label for="word">Word in Chinese or Bahasa Indonesia</label>
                 </div>
 
-                 <div class="input-field col s4">
-                    <select class="icons" placeholder="{{  word.slc }}" id="slc" name="slc"  required>
+            <div class="input-field col s4">
+                    <select class="icons" value="{{  word.slc }}" id="slc" name="slc">
                         <option value="" disabled selected>{{  word.slc }}</option>
                         <option value="CHI" data-icon="CHI.png" class="left">CHI</option>
                         <option value="IND" data-icon="/IND.jpg" class="left">IND</option>
                     </select>
-                    <label for="slc">{{  word.slc }}</label>
+                    <label for="slc">Language</label>
                 </div>
                 <div class="input-field col s8">
                     <input value="{{  word.translation }}" id="translation" name="translation" 
-                    minlength="3" maxlength="50" type="text" class="validate" required>
-                    <label for="translation">{{  word.translation }}</label>
+                    minlength="3" maxlength="50" type="text" class="validate">
+                    <label for="translation">Translation</label>
                 </div>
 
                  <div class="input-field col s4">
-                    <select class="icons" placeholder="{{  word.tlc }}" id="tlc" name="tlc"  required>
+                    <select class="icons" value="{{  word.tlc }}" id="tlc" name="tlc">
                         <option value="" disabled selected>{{  word.tlc }}</option>
                         <option value="EN" data-icon="../images/EN.png" class="left">EN</option>
                         <option value="NL" data-icon="/images/NL.png" class="left">NL</option>
                     </select>
-                    <label>{{  word.tlc }}</label>
+                    <label for="tlc">Language</label>
                 </div>
                 <div class="input-field col s12">
-                    <textarea placeholder="What is the meaning of the word" id="meaning" name="meaning"  
-                    minlength="3" maxlength="300" type="text" required class="materialize-textarea"></textarea>
-                    <label for="meaning">Meaning of the word</label>
+                    <input id="meaning" name="meaning" value="{{ word.meaning }}"
+                    minlength="3" maxlength="300" type="text" class="validate">
+                    <label for="meaning">Meaning</label>
                 </div>
 
                 <div class="input-field col s12">
-                    <select placeholder="Select Category" id="category_name"   name="category_name" class="validate" class="materialize-textarea" required >
-                        <option value="" disabled selected>Select category</option>
-                        {% for category in category %}
+                    <select placeholder="{{ category.category_name }}" id="category_name" name="category_name" class="validate" class="materialize-textarea"> 
+                    {% for category in category %}
+                        <option value="{{ category.category_name }}" disabled selected>{{ category.category_name }}</option>
                         <option value="{{ category.category_name }}">{{ category.category_name }}</option>
-                        {% endfor %}
+                    {% endfor %}
                     </select>
-                    <label>Select Category</label>
+                    <label>Category</label>
                 </div>
 
                 <div class="input-field col s12">
-                    <textarea value="{{  word.usage }}" id="usage" name="usage" required class="materialize-textarea"></textarea>
-                    <label for="usage">{{  word.usage }}</label>
+                    <textarea value="{{  word.usage }}" id="usage" name="usage" class="materialize-textarea">{{  word.usage }}</textarea>
+                    <label for="usage">url</label>
                 </div>
                 <div class="col s12">
                     <button class="btn waves-effect green waves-grey" type="submit" name="" id="message">Change
@@ -69,5 +69,5 @@
         </div>
         </form>
     </div>
-  </div>
+  </div> 
 {% endblock %}
