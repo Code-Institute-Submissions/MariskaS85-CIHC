@@ -3,9 +3,20 @@ html, body {
 }
 
 body {
-    background-image: url("https://github.com/MariskaS85/CIHC/blob/main/templates/images/batik-symbool-van-de-indonesische-identiteit-933.jpg?raw=true");
+    background-image: url("https://www.persumer.com/img/batik.jpg");
     height: 100%;
-    margin: 0;
+    margin-bottom: 50px;
+}
+
+nav .nav-wrapper { 
+    padding-left: 20px;
+}
+.container {
+    padding-bottom: 50px;
+}
+
+.heading {
+    padding: 20px;
 }
 
 h3 {
@@ -29,31 +40,52 @@ h6 {
 .collapsible-header {
     display: flex;
     align-items: center;
+    padding: 2px;
+    font-size: small;
 }
 
 .flashes h5 {
     margin: 5px;
     padding: 10px;
-    background-color: greenyellow;
+    background-color: #fff3e0;
+    color: black;
 }
 
 h5 {
     font-weight: bold;
 }
 
-.container {
-    flex: 1 0 auto;
-}
-
 .page-footer {
-    background-color: black;
-    flex-shrink: 0;
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
 }
 
 .card-panel {
     background-color: lightgrey;
-    padding: 5px;
 }
-.brand-logo {
-    margin: 10px;
+
+.dict_list {
+    font-size: 200;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }

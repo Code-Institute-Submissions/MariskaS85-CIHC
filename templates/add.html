@@ -1,12 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+<h4 class="page_header flow-text center-align">Add word to dictionairy</h4>
 
-
-<h1 class="page_header flow-text">Add word to dictionairy</h1>
-
-
-
-<div class="green white-text">
+<div class="orange lighten-5 text-black">
     <div class="row">
         <form class="col s12" method="POST" action="{{ url_for('add_words') }}">
             <div class="row">
@@ -21,8 +17,8 @@ font_download
                  <div class="input-field col s4"> <span class="material-icons">translate</span>
                     <select class="icons" placeholder="What language is it?" id="slc" name="slc"  required>
                         <option value="" disabled selected>Select language</option>
-                        <option value="CHI" data-icon="https://github.com/MariskaS85/CIHC/blob/main/templates/images/CHI.png?raw=true" class="left">CHI</option>
-                        <option value="IND" data-icon="https://github.com/MariskaS85/CIHC/blob/main/templates/images/IND.png?raw=true" class="left">IND</option>
+                        <option value="CHI" data-icon="https://www.persumer.com/img/CHI.png" class="left">CHI</option>
+                        <option value="IND" data-icon="https://www.persumer.com/img/IND.jpg" class="left">IND</option>
                     </select>
                    
                 </div>
@@ -41,12 +37,13 @@ font_download
 </span>
                     <select class="icons" placeholder="What language is it?" id="tlc" name="tlc"  required>
                         <option value="" disabled selected>Select language</option>
-                        <option value="EN" data-icon="https://github.com/MariskaS85/CIHC/blob/main/templates/images/EN.png?raw=true" class="left">EN</option>
-                        <option value="NL" data-icon="https://raw.githubusercontent.com/MariskaS85/CIHC/main/templates/images/NL.png" class="left">NL</option>
+                        <option value="EN" data-icon="https://www.persumer.com/img/EN.png" class="left">EN</option>
+                        <option value="NL" data-icon="https://www.persumer.com/img/NL.png" class="left">NL</option>
                     </select>
                    
                 </div>
-                <div class="input-field col s12"><span class="material-icons">description</span>                    <textarea placeholder="What is the meaning of the word" id="meaning" name="meaning"  
+                <div class="input-field col s12"><span class="material-icons">description</span>
+                    <textarea placeholder="What is the meaning of the word" id="meaning" name="meaning" value="meaning"
                     minlength="3" maxlength="300" type="text" required class="materialize-textarea"></textarea>
                     
                 </div>
@@ -58,14 +55,12 @@ font_download
                         <option value="{{ category.category_name }}">{{ category.category_name }}</option>
                         {% endfor %}
                     </select>
-                    
                 </div>
-
-                <div class="input-field col s12"><span class="material-icons">place</span>                    <textarea placeholder="Please paste the website link" id="usage" name="usage" required class="materialize-textarea"></textarea>
-                    
+                <div class="input-field col s12"><span class="material-icons">place</span>
+                    <textarea placeholder="Please paste the website link" id="usage" name="usage" required class="materialize-textarea"></textarea>
                 </div>
                 <div class="col s12">
-                    <button class="btn waves-effect green waves-grey" type="submit" name="" id="message" >Submit<i class="material-icons right">send</i>
+                    <button class="btn waves-effect white-text orange lighten-1" type="submit" name="" id="message" >Submit<i class="material-icons right white-text orange lighten-1">send</i>
                     </button>
                 </div>
       </div>

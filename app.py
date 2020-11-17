@@ -29,8 +29,7 @@ def get_words():
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
-    words = []
-    if query.length == 0:
+    if query.count == 0:
         flash("No words to search")
     else :
         words = list(mongo.db.words.find({"$text": {"$search": query}}))
@@ -60,8 +59,6 @@ def add_words():
 
 @app.route("/edit_word/<word_id>", methods=["GET","POST"])
 def edit_word(word_id):
-    print ("Does this work?")
-    print (word_id)
     word = mongo.db.words.find_one({"_id": ObjectId(word_id)})
     if request.method == "POST":
         is_valid = validate_form(request.form) 

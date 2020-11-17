@@ -10,6 +10,4 @@ In order to clearify these words i made a dictionary of the words used on the we
 
 The website starts off with all words in the database, with a clear and obious search bar in the above. 
 
-In the menu you can add extra words and with the 
-
-Than you can find 
+In the menu you can add extra words and with the "Add word" button you can also read more about the CIHC in the about page.
