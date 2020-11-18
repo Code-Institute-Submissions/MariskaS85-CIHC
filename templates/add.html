@@ -2,52 +2,41 @@
 {% block content %}
 <h4 class="page_header flow-text center-align">Add word to dictionairy</h4>
 
+  <!-- form to add new word where only category is referred to database -->
 <div class="orange lighten-5 text-black">
     <div class="row">
         <form class="col s12" method="POST" action="{{ url_for('add_words') }}">
             <div class="row">
-                <div class="input-field col s8"><span class="material-icons">
-font_download
-</span><span class="material-icons">swap_horiz</span><span class="material-icons">translate</span>
+                <div class="input-field col s8"><span class="material-icons">font_download</span><span class="material-icons">swap_horiz</span><span class="material-icons">translate</span>
                     <input placeholder="Please fill in the word" id="word" name="word" 
                     minlength="3" maxlength="50" type="text" class="validate" required>
-                    
                 </div>
-
-                 <div class="input-field col s4"> <span class="material-icons">translate</span>
+                 <!-- images are stored on the website of Persumer -->
+                <div class="input-field col s4"> <span class="material-icons">translate</span>
                     <select class="icons" placeholder="What language is it?" id="slc" name="slc"  required>
                         <option value="" disabled selected>Select language</option>
                         <option value="CHI" data-icon="https://www.persumer.com/img/CHI.png" class="left">CHI</option>
                         <option value="IND" data-icon="https://www.persumer.com/img/IND.jpg" class="left">IND</option>
                     </select>
-                   
                 </div>
-                <div class="input-field col s8"><span class="material-icons">translate</span><span class="material-icons">
-swap_horiz
-</span><span class="material-icons">
-font_download
-</span>
+                <div class="input-field col s8"><span class="material-icons">translate</span>
+                    <span class="material-icons"> swap_horiz</span><span class="material-icons">font_download</span>
                     <input placeholder="Please fill in the translation" id="translation" name="translation" 
-                    minlength="3" maxlength="50" type="text" class="validate" required>
-                    
+                        minlength="3" maxlength="50" type="text" class="validate" required>
                 </div>
-
-                 <div class="input-field col s4"><span class="material-icons">
-font_download
-</span>
+                 <div class="input-field col s4"><span class="material-icons">font_download</span>
                     <select class="icons" placeholder="What language is it?" id="tlc" name="tlc"  required>
                         <option value="" disabled selected>Select language</option>
+                        
+                <!-- images are stored on the website of Persumer -->
                         <option value="EN" data-icon="https://www.persumer.com/img/EN.png" class="left">EN</option>
                         <option value="NL" data-icon="https://www.persumer.com/img/NL.png" class="left">NL</option>
                     </select>
-                   
                 </div>
                 <div class="input-field col s12"><span class="material-icons">description</span>
                     <textarea placeholder="What is the meaning of the word" id="meaning" name="meaning" value="meaning"
                     minlength="3" maxlength="300" type="text" required class="materialize-textarea"></textarea>
-                    
                 </div>
-
                 <div class="input-field col s12"><span class="material-icons">category</span>
                     <select placeholder="Select Category" id="category_name"   name="category_name" class="validate" class="materialize-textarea" required >
                         <option value="{{ category.category_name }}" disabled selected>Select category</option>
@@ -59,6 +48,8 @@ font_download
                 <div class="input-field col s12"><span class="material-icons">place</span>
                     <textarea placeholder="Please paste the website link" id="usage" name="usage" required class="materialize-textarea"></textarea>
                 </div>
+                
+                <!-- Send added word -->
                 <div class="col s12">
                     <button class="btn waves-effect white-text orange lighten-1" type="submit" name="" id="message" >Submit<i class="material-icons right white-text orange lighten-1">send</i>
                     </button>

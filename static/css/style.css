@@ -7,10 +7,12 @@ body {
     height: 100%;
     margin-bottom: 50px;
 }
-
+/* ---------------------------------------------- navigation */
 nav .nav-wrapper { 
     padding-left: 20px;
 }
+
+/* ---------------------------------------------- container  */
 .container {
     padding-bottom: 50px;
 }
@@ -23,20 +25,26 @@ h3 {
     align-content: center;
     text-align: center;
 }
-
+/* ---------------------------------------------- search */
 .search {
     align-items: right;
 }
 
+/* ---------------------------------------------- headers */
 
 h1 {
     margin: 10px;
+}
+
+h5 {
+    font-weight: bold;
 }
 
 h6 {
     margin: 10px;
 }
 
+/* ---------------------------------------------- Words menu for extra details on word*/
 .collapsible-header {
     display: flex;
     align-items: center;
@@ -44,15 +52,12 @@ h6 {
     font-size: small;
 }
 
+/* ---------------------------------------------- Flash messages */
 .flashes h5 {
     margin: 5px;
     padding: 10px;
     background-color: #fff3e0;
     color: black;
-}
-
-h5 {
-    font-weight: bold;
 }
 
 .page-footer {
@@ -62,13 +67,10 @@ h5 {
    width: 100%;
 }
 
-.card-panel {
-    background-color: lightgrey;
-}
-
 .dict_list {
     font-size: 200;
 }
+/* ---------------------------------------------- scrollbar */
 
 /* width */
 ::-webkit-scrollbar {

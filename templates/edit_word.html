@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 
-
+<!--  Edit word page --> 
 <h3 class="page_header">Edit word to dictionairy</h3>
 
 
-
+<!--  For will load the data from database as placeholder/value  --> 
 <div class="orange lighten-3 text-black">
     <div class="row">
         <form class="col s12" method="POST" action="{{ url_for('edit_word', word_id=word._id) }}">
@@ -58,6 +58,7 @@
                     <textarea value="{{  word.usage }}" id="usage" name="usage" class="materialize-textarea">{{  word.usage }}</textarea>
                     <label for="usage">url</label>
                 </div>
+                <!--  submit form button --> 
                 <div class="col s12">
                     <button class="btn waves-effect orange lighten-3 text-black" type="submit" name="" id="message">Change
                         <i class="material-icons right">send</i>

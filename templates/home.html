@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% block nav %}
-
+<!--  Home header --> 
    <h4 class="center-align"> Welcome to the online dictionary <br> of <br> the Chinese Indonesian Heritage Center</h4>
 
 {% endblock %} 
 {% block content %}
+<!--  Searchbar --> 
     <div class="row card-panel orange lighten-5 text-black">
         <form action="{{ url_for('search') }}" method="POST" class="col s12">
             <div class="row valign-wrapper center-align">
@@ -19,7 +20,9 @@
             </div>
         </form>
     </div>
-    {% if words|length > 0 %}
+<!--  Spare if else statement when no word is found  --> 
+    {% if words|length > 0 %} 
+<!--  words database list --> 
     <ul class="collapsible">
         {% for word in words %}  
         <li>
@@ -50,6 +53,7 @@
                             
                         </tbody>                 
                     </table>
+<!-- Read article where the word is used, edit or delete word --> 
                     <table>
                     <tbody>
                             <tr>
@@ -64,6 +68,7 @@
         </li>
         {% endfor %}
     </ul> 
+<!--  end else statement --> 
     {% else %}
         <h3 class="red-text text-darken-4 center-align">No Results Found</h3>
     {% endif %}

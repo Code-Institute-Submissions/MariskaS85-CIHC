@@ -1,3 +1,4 @@
+# import all objects
 import os
 from flask import (
     Flask, flash, render_template, 
@@ -18,14 +19,17 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+# validate if form has content
 def validate_form(form):
     return True
 
+# get words for database
 @app.route("/")
 def get_words():
     words = list(mongo.db.words.find())
     return render_template("home.html", words=words)
 
+# search for words in database if no words found show "No words to search"
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
@@ -36,6 +40,7 @@ def search():
 
     return render_template("home.html", words=words)
 
+# add word to database using from shown after adding show message
 @app.route("/add", methods=["GET", "POST"])
 def add_words():
     if request.method == "POST":
@@ -56,7 +61,7 @@ def add_words():
     category = mongo.db.category.find().sort("category_name", 1)
     return render_template("add.html", category=category)
 
-
+# return words and connected reference in form can be edited after edit flash message
 @app.route("/edit_word/<word_id>", methods=["GET","POST"])
 def edit_word(word_id):
     word = mongo.db.words.find_one({"_id": ObjectId(word_id)})
@@ -82,10 +87,12 @@ def edit_word(word_id):
     category = mongo.db.category.find().sort("category_name", 1)
     return render_template("edit_word.html", word=word, category=category)
 
+#render about page
 @app.route("/about_page")
 def about_page():
     return render_template("about.html")
 
+#delete word from database
 @app.route("/delete_word/<word_id>")
 def delete_word(word_id):
     mongo.db.words.remove({ "_id": ObjectId(word_id)})
