@@ -23,7 +23,7 @@ mongo = PyMongo(app)
 def validate_form(form):
     return True
 
-# get words for database
+# get words for database also used in Task miniproject
 @app.route("/")
 def get_words():
     words = list(mongo.db.words.find())
@@ -61,7 +61,7 @@ def add_words():
     category = mongo.db.category.find().sort("category_name", 1)
     return render_template("add.html", category=category)
 
-# return words and connected reference in form can be edited after edit flash message
+# return words and connected reference in form can be edited after edit flash message also used in Task miniproject
 @app.route("/edit_word/<word_id>", methods=["GET","POST"])
 def edit_word(word_id):
     word = mongo.db.words.find_one({"_id": ObjectId(word_id)})
@@ -92,7 +92,7 @@ def edit_word(word_id):
 def about_page():
     return render_template("about.html")
 
-#delete word from database
+#delete word from database also used in Task miniproject
 @app.route("/delete_word/<word_id>")
 def delete_word(word_id):
     mongo.db.words.remove({ "_id": ObjectId(word_id)})
